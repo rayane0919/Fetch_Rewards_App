@@ -70,15 +70,15 @@ object Main {
   }
 
   // function that will execute the application.
-  def application(analysis: String, month: Int, format: String): DataFrame = {
+  def application(analysis: String, month: Int, format: String): Unit = {
     if (analysis == "analysis1") {
-      return analysis1(month)
+      println(analysis1(month))
     }
     if (analysis == "analysis2") {
-      return analysis2(format)
+      println(analysis2(format))
     }
     else {
-      return analysis3()
+      println(analysis3())
     }
   }
 
