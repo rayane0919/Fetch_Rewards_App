@@ -16,9 +16,9 @@ object Main {
     var df_v3: DataFrame = spark.read.csv("/content/rewards_receipts_lat_v3.csv", header=True, inferSchema=True)
     var subset: DataFrame = df_v3.filter(split(col("RECEIPT_PURCHASE_DATE"), "-")(1) <= month)
     var count: Int = subset.select("DIGITAL_RECEIPT").count()
-    var df_true: Int = subset.filter(("DIGITAL_RECEIPT == True"))
+    var df_true: Int = subset.filter(("DIGITAL_RECEIPT == true"))
     var count_true: Double = df_true.count()/count
-    var df_false: Int = subset.filter("DIGITAL_RECEIPT == False")
+    var df_false: Int = subset.filter("DIGITAL_RECEIPT == false")
     var count_false: Double = df_false.count()/count
     var results: (Int, Int) = (count_true, count_false)
     return results
