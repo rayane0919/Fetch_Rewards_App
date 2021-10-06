@@ -13,7 +13,7 @@ object Main {
    Output: A tuple where index 0 is a percentage value for DIGITAL RECEIPT used and index 1 is a percentage value for non DIGITAL RECEIPT used.
 */
   def analysis1(month: Int): (Int, Int) = {
-    var df_v3: DataFrame = spark.read.csv("/content/rewards_receipts_lat_v3.csv", header=True, inferSchema=True)
+    var df_v3: DataFrame = spark.read.csv("/content/rewards_receipts_lat_v3.csv", header=true, inferSchema=true)
     var subset: DataFrame = df_v3.filter(split(col("RECEIPT_PURCHASE_DATE"), "-")(1) <= month)
     var count: Int = subset.select("DIGITAL_RECEIPT").count()
     var df_true: Int = subset.filter(("DIGITAL_RECEIPT == true"))
