@@ -49,7 +49,7 @@ object Main {
   /*
    Purpose: To train a Logistic Regression model to predict product brand name.
    Input: A dataframe.
-   output: An evaluation rate of the Logistic Regression model.
+   output: An evaluation of the Logistic Regression model.
 */
   def analysis3(): Unit = {
      //Clean the data.
