@@ -70,7 +70,7 @@ object Main {
   }
 
   // function that will execute the application.
-  def application(analysis: String, month: Int, format: String): List[Double] = {
+  def application(analysis: String, month: Int, format: String): DataFrame = {
     if (analysis == "analysis1") {
       return analysis1(month)
     }
