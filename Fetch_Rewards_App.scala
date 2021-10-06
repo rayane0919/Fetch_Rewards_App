@@ -31,7 +31,7 @@ object Main {
 */
   def analysis2(format: String): DataFrame = {
      var df_v3: DataFrame = spark.read.csv("/content/rewards_receipts_lat_v3.csv", header=true, inferSchema=true)
-     var store_state: DataFrame = df_v3.groupBy("STORE_STATE").sum("RECEIPT_TOTAL").orderBy("sum(RECEIPT_TOTAL)", ascending=False).show()
+     var store_state: DataFrame = df_v3.groupBy("STORE_STATE").sum("RECEIPT_TOTAL").orderBy("sum(RECEIPT_TOTAL)", ascending=false).show()
 
     if (format == "csv") {
       return store_state
