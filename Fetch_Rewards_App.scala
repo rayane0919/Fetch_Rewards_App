@@ -30,7 +30,7 @@ object Main {
    Outout: A dataframe grouped by state and ordered from highest ticket purchases to the lowest ones.
 */
   def analysis2(format: String): DataFrame = {
-     var df_v3: DataFrame = spark.read.csv("/content/rewards_receipts_lat_v3.csv", header=True, inferSchema=True)
+     var df_v3: DataFrame = spark.read.csv("/content/rewards_receipts_lat_v3.csv", header=true, inferSchema=true)
      var store_state: DataFrame = df_v3.groupBy("STORE_STATE").sum("RECEIPT_TOTAL").orderBy("sum(RECEIPT_TOTAL)", ascending=False).show()
 
     if (format == "csv") {
@@ -53,7 +53,7 @@ object Main {
 */
   def analysis3(): Unit = {
      //Clean the data.
-    var df_v2: DataFrame = spark.read.csv("/content/rewards_receipts_item_lat_v2.csv", header=True, inferSchema=True)
+    var df_v2: DataFrame = spark.read.csv("/content/rewards_receipts_item_lat_v2.csv", header=true, inferSchema=true)
     var df_v2: DataFrame = df_v2.na.drop(how="any", subset=("ITEM_PRICE", "WEIGHT", "PRODUCT_NAME", "CATEGORY")
     //Create feature vector.
     var indexer: StringIndexer = new StringIndexer(inputCols=("CATEGORY", "PRODUCT_NAME"), outputCols=("CATEGORY_INDEXED", "PRODUCT_NAME_INDEXED")
